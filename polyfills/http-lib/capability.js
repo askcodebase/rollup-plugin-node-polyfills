@@ -25,11 +25,9 @@ export var arraybuffer = haveArrayBuffer
 export var msstream = !hasFetch && haveSlice
 export var mozchunkedarraybuffer = !hasFetch
 checkTypeSupport('moz-chunked-arraybuffer')
-export var overrideMimeType = isFunction(xhr.overrideMimeType)
+export var overrideMimeType = true
 export var vbArray = isFunction(global.VBArray)
 
 function isFunction(value) {
   return typeof value === 'function'
 }
-
-xhr = null // Help gc
