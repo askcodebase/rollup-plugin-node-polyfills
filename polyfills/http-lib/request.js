@@ -46,38 +46,10 @@ function ClientRequest(opts) {
 }
 
 inherits(ClientRequest, Writable)
-// Taken from http://www.w3.org/TR/XMLHttpRequest/#the-setrequestheader%28%29-method
-var unsafeHeaders = [
-  'accept-charset',
-  'accept-encoding',
-  'access-control-request-headers',
-  'access-control-request-method',
-  'connection',
-  'content-length',
-  'cookie',
-  'cookie2',
-  'date',
-  'dnt',
-  'expect',
-  'host',
-  'keep-alive',
-  'origin',
-  'referer',
-  'te',
-  'trailer',
-  'transfer-encoding',
-  'upgrade',
-  'user-agent',
-  'via'
-]
+
 ClientRequest.prototype.setHeader = function(name, value) {
   var self = this
   var lowerName = name.toLowerCase()
-    // This check is not necessary, but it prevents warnings from browsers about setting unsafe
-    // headers. To be honest I'm not entirely sure hiding these warnings is a good thing, but
-    // http-browserify did it, so I will too.
-  if (unsafeHeaders.indexOf(lowerName) !== -1)
-    return
 
   self._headers[lowerName] = {
     name: name,
