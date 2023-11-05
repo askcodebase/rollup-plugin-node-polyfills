@@ -4,21 +4,6 @@ import {IncomingMessage, readyStates as rStates} from './response';
 import {Writable} from 'stream';
 import toArrayBuffer from './to-arraybuffer';
 
-function decideMode(preferBinary, useFetch) {
-  if (capability.hasFetch && useFetch) {
-    return 'fetch'
-  } else if (capability.mozchunkedarraybuffer) {
-    return 'moz-chunked-arraybuffer'
-  } else if (capability.msstream) {
-    return 'ms-stream'
-  } else if (capability.arraybuffer && preferBinary) {
-    return 'arraybuffer'
-  } else if (capability.vbArray && preferBinary) {
-    return 'text:vbarray'
-  } else {
-    return 'text'
-  }
-}
 export default ClientRequest;
 
 function ClientRequest(opts) {
@@ -53,7 +38,7 @@ function ClientRequest(opts) {
   } else {
     throw new Error('Invalid value for opts.mode')
   }
-  self._mode = decideMode(preferBinary, useFetch)
+  self._mode = 'fetch'
 
   self.on('finish', function() {
     self._onFinish()

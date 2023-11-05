@@ -1,5 +1,5 @@
 {
-  "name": "rollup-plugin-node-polyfills",
+  "name": "@askcodebase/rollup-plugin-node-polyfills",
   "version": "0.2.1",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
