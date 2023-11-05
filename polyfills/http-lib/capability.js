@@ -24,7 +24,6 @@ export var arraybuffer = haveArrayBuffer
 // be used if it's available, just return false for these to avoid the warnings.
 export var msstream = !hasFetch && haveSlice
 export var mozchunkedarraybuffer = !hasFetch
-checkTypeSupport('moz-chunked-arraybuffer')
 export var overrideMimeType = true
 export var vbArray = isFunction(global.VBArray)
 
