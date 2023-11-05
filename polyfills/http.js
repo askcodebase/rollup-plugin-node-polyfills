@@ -34,13 +34,7 @@ export function request(opts, cb) {
   if (typeof opts === 'string')
     opts = parse(opts)
 
-
-  // Normally, the page is loaded from http or https, so not specifying a protocol
-  // will result in a (valid) protocol-relative url. However, this won't work if
-  // the protocol is something else, like 'file:'
-  var defaultProtocol = global.location.protocol.search(/^https?:$/) === -1 ? 'http:' : ''
-
-  var protocol = opts.protocol || defaultProtocol
+  var protocol = opts.protocol || ''
   var host = opts.hostname || opts.host
   var port = opts.port
   var path = opts.path || '/'
